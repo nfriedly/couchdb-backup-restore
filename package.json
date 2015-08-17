@@ -1,0 +1,48 @@
+{
+  "name": "couchdb-backup-restore",
+  "version": "1.0.0",
+  "description": "Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.",
+  "homepage": "",
+  "repository": "nfriedly/couchdb-backup-restore",
+  "author": {
+    "name": "Nathan Friedly",
+    "email": "",
+    "url": "http://nfriedly.com"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "apache",
+    "couchdb",
+    "database",
+    "couch",
+    "db",
+    "backup",
+    "restore",
+    "dump",
+    "recover",
+    "recovery"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-eslint": "^0.15.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-nsp": "^0.4.5",
+    "gulp-plumber": "^1.0.0"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.4.2",
+    "concat-stream": "^1.5.0",
+    "lodash": "^3.10.1",
+    "nano": "^6.1.5",
+    "tar-stream": "^1.2.1"
+  }
+}
