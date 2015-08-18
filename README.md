@@ -31,6 +31,33 @@ cbr.backup(config, done).pipe(fs.createWriteStream('./db-backup.tar.gz'))
 fs.createReadStream('./db-backup.tar.gz').pipe(cbr.restore(config, done);
 ```
 
+[Bluemix](https://console.ng.bluemix.net/) / Cloudant example:
+
+```
+var cbr = require('couchdb-backup-restore');
+var bluemix = require('bluemix'); 
+
+var config = {
+ credentials: bluemix.getService('cloudantNoSQLDB').credentials
+}
+
+// or just var config = bluemix.getService('cloudantNoSQLDB');
+```
+
+### Configuring
+
+Default options are:
+
+```js
+{
+  credentials: 'http://localhost:5984',
+  excludeDbs: ['_replicator', '_users'] // automatic built-in dbs that you probably don't want to backup
+}
+```
+
+* `credentials` is passed directly to [nano](https://www.npmjs.com/package/nano) and can be either a straight url or a configuration object.
+* `excludeDbs` should be an array, although it may be an empty array (`[]`) if you want to include the built-in `_replicator` and `_users` databases.
+
 ## License
 
 MIT © [Nathan Friedly](http://nfriedly.com)
