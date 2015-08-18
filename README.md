@@ -1,6 +1,7 @@
 # couchdb-backup-restore [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.
 
+Also plays nice with [Cloudant](https://cloudant.com/) (hosted CouchDB service).
 
 ## Install
 

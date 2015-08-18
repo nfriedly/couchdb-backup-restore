@@ -23,7 +23,8 @@
     "restore",
     "dump",
     "recover",
-    "recovery"
+    "recovery",
+    "cloudant"
   ],
   "devDependencies": {
     "gulp": "^3.6.0",
