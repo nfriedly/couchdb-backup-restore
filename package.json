@@ -1,6 +1,6 @@
 {
   "name": "couchdb-backup-restore",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.",
   "homepage": "",
   "repository": "nfriedly/couchdb-backup-restore",
