@@ -89,7 +89,7 @@ describe('couchdb-backup-restore', function () {
       var backupPath = path.join(tmpDir, 'couchdb_test_backup_' + Math.random().toString().substr(2) + '.tar.gz');
 
       // first create a backup
-      var backupStream = couchdbBackupRestore.backup();
+      var backupStream = couchdbBackupRestore.backup({databases: [DBNAME]});
       backupStream.on('error', done);
       backupStream.pipe(fs.createWriteStream(backupPath)).on('close', function () {
 
