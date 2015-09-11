@@ -161,7 +161,12 @@ describe('couchdb-backup-restore', function () {
                   next();
                 });
               }
-            ], done);
+            ], function (err) {
+              // cleanup
+              fs.unlink(backupPath, function (unlinkErr) {
+                done(err || unlinkErr);
+              });
+            });
           }));
         });
       });
