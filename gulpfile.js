@@ -21,7 +21,7 @@ gulp.task('nsp', function (cb) {
 gulp.task('test', function (cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  gulp.src('test/*.js')
     .pipe(mocha({reporter: 'spec'}))
     .on('error', function (err) {
       mochaErr = err;
