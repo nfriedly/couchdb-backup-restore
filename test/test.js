@@ -11,6 +11,7 @@ var async = require('async');
 var DBNAME = 'test_db'; // note: this must match the name of the db in fixtures/test_backup.tar.gz
 
 describe('couchdb-backup-restore', function () {
+  test.timeout(5000); // give the tests a little extra time since we're dealing with multiple network & fs requests in some tests
 
   function cleanup(next) {
     nano.db.destroy(DBNAME, function (err) {
