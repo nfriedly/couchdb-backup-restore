@@ -60,10 +60,12 @@ Default options are:
 * `databases` may be an array. If set, CBR will only back up the specified DBs, overriding the `excludeDbs` option.
 
 
-### Notes
+### Limitations
 
 * This backs up only the current revision (`_rev`) of each document; **backing up and restoring will loose all previous revisions.**
   (This is normal behavior though - to quote the documentation, [You cannot rely on document revisions for any other purpose than concurrency control.](https://wiki.apache.org/couchdb/Document_revisions))
+  
+* This library **does not support attachments.**, it will allow you to create a backup of a DB
 
 ## License
 
