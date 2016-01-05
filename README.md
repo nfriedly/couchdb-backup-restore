@@ -27,7 +27,7 @@ function done(err) {
 cbr.backup(config, done).pipe(fs.createWriteStream('./db-backup.tar.gz'))
   
 // restore
-fs.createReadStream('./db-backup.tar.gz').pipe(cbr.restore(config, done);
+fs.createReadStream('./db-backup.tar.gz').pipe(cbr.restore(config, done));
 ```
 
 [Bluemix](https://console.ng.bluemix.net/) / Cloudant example:
