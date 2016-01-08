@@ -40,7 +40,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "async": "^1.5.1",
+    "async": "^1.5.2",
     "concat-stream": "^1.5.1",
     "debug": "^2.2.0",
     "lodash": "^3.10.1",
