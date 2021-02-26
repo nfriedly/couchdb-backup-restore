@@ -2,11 +2,9 @@
   "name": "couchdb-backup-restore",
   "version": "1.1.5",
   "description": "Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.",
-  "homepage": "",
   "repository": "nfriedly/couchdb-backup-restore",
   "author": {
     "name": "Nathan Friedly",
-    "email": "",
     "url": "http://nfriedly.com"
   },
   "files": [
@@ -27,16 +25,15 @@
     "cloudant"
   ],
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-eslint": "^6.0.0",
-    "gulp-exclude-gitignore": "^1.2.0",
-    "gulp-mocha": "^8.0.0",
-    "gulp-nsp": "^3.0.1",
-    "gulp-plumber": "^1.2.1"
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "mocha": "^8.3.0",
+    "prettier": "2.2.1"
   },
   "scripts": {
-    "--prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "eslint . && mocha test/test.js",
+    "autofix": "eslint . --fix"
   },
   "license": "MIT",
   "dependencies": {
