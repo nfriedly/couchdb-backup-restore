@@ -1,0 +1,68 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  COUCHDB_USER: admin
+  COUCHDB_PASSWORD: password
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }} with CouchDB ${{ matrix.couchdb }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [12, 14, 15]
+        os: [ubuntu-latest]
+        couchdb: ["3.1", "3.0", "2.3", "1.6"]
+
+    steps:
+      - name: Set up CouchDB
+        uses: iamssen/couchdb-github-action@master
+        with:
+          couchdb-version: ${{ matrix.couchdb }}
+
+      - name: Test CouchDB
+        run: |
+          curl -X POST -H "Content-Type: application/json; charset=utf-8" -d '{"name": $COUCHDB_USER, "password": $COUCHDB_USER}' http://127.0.0.1:5984/_session
+      - name: Clone Repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install Global Dependencies
+        run: npm install -g npm@latest
+
+      - name: Get NPM Cache Directory
+        id: npm-cache
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Version
+        run: |
+          node --version
+          npm --version
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Test
+        run: npm test
