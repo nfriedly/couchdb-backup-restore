@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ["lts/*", "stable"]
+        node: [14, 15]
         os: [ubuntu-latest]
         couchdb: ["latest", "3.0", "2.3"]
 
