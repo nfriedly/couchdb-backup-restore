@@ -1,11 +1,14 @@
 "use strict";
 
+require("dotenv").config();
+var credentials = process.env.COUCHDB || "http://localhost:5984";
+
 var fs = require("fs");
 var path = require("path");
 var tmpDir = require("os").tmpdir();
 var assert = require("assert");
 var couchdbBackupRestore = require("../lib/cbr.js");
-var nano = require("nano")("http://localhost:5984");
+var nano = require("nano")(credentials);
 var async = require("async");
 
 var DBNAME = "test_db"; // note: this must match the name of the db in fixtures/test_backup.tar.gz
@@ -56,7 +59,7 @@ describe("couchdb-backup-restore", function () {
 
       var dataSent = false;
 
-      var source = couchdbBackupRestore.backup(null, function () {
+      var source = couchdbBackupRestore.backup({ credentials }, function () {
         assert(dataSent, "Data was written to the destination stream");
         done();
       });
@@ -76,7 +79,7 @@ describe("couchdb-backup-restore", function () {
     );
     source.on("error", done);
     source.pipe(
-      couchdbBackupRestore.restore(function (err) {
+      couchdbBackupRestore.restore({ credentials }, function (err) {
         if (err) {
           return done(err);
         }
@@ -103,7 +106,10 @@ describe("couchdb-backup-restore", function () {
       );
 
       // first create a backup
-      var backupStream = couchdbBackupRestore.backup({ databases: [DBNAME] });
+      var backupStream = couchdbBackupRestore.backup({
+        credentials,
+        databases: [DBNAME],
+      });
       backupStream.on("error", done);
       backupStream
         .pipe(fs.createWriteStream(backupPath))
@@ -145,7 +151,7 @@ describe("couchdb-backup-restore", function () {
               // todo maybe verifying the changes
               // now rollback the db
               fs.createReadStream(backupPath).pipe(
-                couchdbBackupRestore.restore(function (err) {
+                couchdbBackupRestore.restore({ credentials }, function (err) {
                   if (err) {
                     return done(err);
                   }
