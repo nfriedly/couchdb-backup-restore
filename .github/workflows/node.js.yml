@@ -12,7 +12,7 @@ on:
       - master
 
 env:
-  COUCHDB: COUCHDB=http://admin:password@localhost:5984
+  COUCHDB: 'http://admin:password@localhost:5984'
 
 jobs:
   test:
