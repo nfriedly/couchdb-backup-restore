@@ -1,4 +1,4 @@
-# couchdb-backup-restore [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# couchdb-backup-restore [![NPM version][npm-image]][npm-url] [![Build Status - with CouchDB 1.6.1][travis-image]][travis-url] [![Node.js CI - with CouchDB 2.3, 3.0, and latest](https://github.com/nfriedly/couchdb-backup-restore/actions/workflows/node.js.yml/badge.svg)](https://github.com/nfriedly/couchdb-backup-restore/actions/workflows/node.js.yml) [![Dependency Status][daviddm-image]][daviddm-url]
 > Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.
 
 Also plays nice with [Cloudant](https://cloudant.com/) (hosted CouchDB service).
@@ -66,6 +66,12 @@ Default options are:
 * `credentials` is passed directly to [nano](https://www.npmjs.com/package/nano) and can be either a straight url or a configuration object.
 * `excludeDbs` should be an array, although it may be an empty array (`[]`) if you want to include the built-in `_replicator` and `_users` databases.
 * `databases` may be an array. If set, CBR will only back up the specified DBs, overriding the `excludeDbs` option.
+
+### Compatibility
+
+Travis CI automatically tests changes against Node.js LTS and Stable (14.16.0 and 15.10.0 at the time of writing) and CouchDB 1.6.1.
+
+Github Actions automatically tests changes against Node.js 14 and 15 and Couch DB 2.3, 3.0, and latest (3.1.1 at the time of writing).
 
 ## License
 
