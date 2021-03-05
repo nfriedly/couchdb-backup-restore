@@ -1,7 +1,9 @@
 # couchdb-backup-restore [![NPM version][npm-image]][npm-url] [![Build Status - with CouchDB 1.6.1][travis-image]][travis-url] [![Node.js CI - with CouchDB 2.3, 3.0, and latest](https://github.com/nfriedly/couchdb-backup-restore/actions/workflows/node.js.yml/badge.svg)](https://github.com/nfriedly/couchdb-backup-restore/actions/workflows/node.js.yml)
-> Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.
+Creates backups of couchdb databases (.tar.gz files containing one .json file per database) and restores from those backups.
 
 Also plays nice with [Cloudant](https://cloudant.com/) (hosted CouchDB service).
+
+**Note: [the official backup methods](https://docs.couchdb.org/en/latest/maintenance/backups.html) are recomended for most users.** However, this tool will remain avaliable for those who need it.
 
 ### Limitations
 
