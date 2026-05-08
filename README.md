@@ -6,7 +6,7 @@ Creates backups of couchdb databases (.tar.gz files containing one .json file pe
 
 Also plays nice with [Cloudant](https://cloudant.com/) (hosted CouchDB service).
 
-**Note: [the official backup methods](https://docs.couchdb.org/en/latest/maintenance/backups.html) are recomended for most users.** However, this tool will remain avaliable for those who need it.
+**Note: [the official backup methods](https://docs.couchdb.org/en/latest/maintenance/backups.html) are recommended for most users.** However, this tool will remain available for those who need it.
 
 ### Limitations
 
