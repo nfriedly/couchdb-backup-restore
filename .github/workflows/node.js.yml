@@ -3,13 +3,7 @@
 
 name: Node.js CI
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 env:
   COUCHDB: 'http://admin:password@localhost:5984'
