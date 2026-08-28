@@ -25,12 +25,17 @@
     "cloudant"
   ],
   "devDependencies": {
+    "@eslint/compat": "^2.1.0",
+    "@eslint/config-helpers": "^0.7.0",
+    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/js": "^10.0.1",
     "dotenv": "^8.2.0",
-    "eslint": "^7.20.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.11.0",
     "mocha": "^11.7.5",
-    "prettier": "2.2.1"
+    "prettier": "^3.9.6"
   },
   "scripts": {
     "test": "eslint . && mocha test/test.js",

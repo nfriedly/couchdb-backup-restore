@@ -46,7 +46,7 @@ describe("couchdb-backup-restore", function () {
             },
           ],
         },
-        next
+        next,
       );
     });
   }
@@ -75,7 +75,7 @@ describe("couchdb-backup-restore", function () {
   it("should be able to restore an empty db from a backup", function (done) {
     this.timeout(5000);
     var source = fs.createReadStream(
-      path.join(__dirname, "fixtures/test_backup.tar.gz")
+      path.join(__dirname, "fixtures/test_backup.tar.gz"),
     );
     source.on("error", done);
     source.pipe(
@@ -91,7 +91,7 @@ describe("couchdb-backup-restore", function () {
           assert.equal(doc.name, "test doc 2");
           done();
         });
-      })
+      }),
     );
   });
 
@@ -102,7 +102,7 @@ describe("couchdb-backup-restore", function () {
       }
       var backupPath = path.join(
         tmpDir,
-        "couchdb_test_backup_" + Math.random().toString().substr(2) + ".tar.gz"
+        "couchdb_test_backup_" + Math.random().toString().substr(2) + ".tar.gz",
       );
 
       // first create a backup
@@ -135,7 +135,7 @@ describe("couchdb-backup-restore", function () {
                   if (err) {
                     return next(err);
                   }
-                  db.destroy(doc._id, doc._rev, next); // eslint-disable-line no-underscore-dangle
+                  db.destroy(doc._id, doc._rev, next);
                 });
               },
 
@@ -180,7 +180,7 @@ describe("couchdb-backup-restore", function () {
                         db.get("test_doc_3", function (err) {
                           assert(
                             err,
-                            "Should throw a not_found error because this doc does not exist in the backup"
+                            "Should throw a not_found error because this doc does not exist in the backup",
                           );
                           assert(err.error, "not_found");
                           next();
@@ -192,11 +192,11 @@ describe("couchdb-backup-restore", function () {
                       fs.unlink(backupPath, function (unlinkErr) {
                         done(err || unlinkErr);
                       });
-                    }
+                    },
                   );
-                })
+                }),
               );
-            }
+            },
           );
         });
     });
